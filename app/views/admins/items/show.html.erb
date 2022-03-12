@@ -1,0 +1,73 @@
+
+
+ <h2>商品詳細</h2>
+<div class="container">
+  <div class="row">
+   <div class="col-lg-4">
+    <p>商品画像</p>
+   <%= attachment_image_tag @item, :image, size: "200x200", fallback: "no_image.jpg" %>
+     </div>
+<div class="col-lg-8">
+ <div class="row">
+<div class="col-lg-4">
+     <h5>商品名</h5>
+     </div>
+     <div class="col-lg-6">
+     <%= @item.name %>
+     </div>
+      </div>
+ <div class="row">
+  <div class="col-lg-4">
+     <h5>商品説明</h5>
+     </div>
+     <div class="col-lg-6">
+      <%= @item.introduction %>
+      </div>
+      </div>
+       <div class="row">
+  <div class="col-lg-4">
+      <h5>メーカー</h5>
+      </div>
+      <div class="col-lg-6">
+       <%= @item.maker.name %>
+       </div>
+       </div>
+ <div class="row">
+  <div class="col-lg-4">
+      <h5>ジャンル</h5>
+      </div>
+      <div class="col-lg-6">
+       <%= @item.genre.name %>
+       </div>
+       </div>
+      <div class="row">
+       <div class="col-lg-4">
+      <h5>価格（税込み）</h5>
+       </div>
+      <div class="col-lg-6">
+      <%= @item.price %>(<%= (@item.price*1.08).to_i %>)円
+     </div>
+      </div>
+            <div class="row">
+       <div class="col-lg-4">
+      <h5>販売ステータス</h5>
+       </div>
+      <div class="col-lg-6">
+    <%if @item.is_active == 0 %>
+           在庫なし
+           <% elsif @item.is_active == 1 %>
+           在庫あり
+           <% else %>
+           残りわずか
+
+           <% end %>
+     </div>
+      </div>
+    <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %>
+  </div>
+    </div>
+      </div>
+
+
+
+

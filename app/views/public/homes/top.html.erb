@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+   <div class="col-lg-4">
+
+   <table class="table table-hover table-inverse">
+        <thead>
+      <tr>
+        <th><p>お悩み検索<p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @troubles.each do |troubles| %>
+         <tr>
+           <td><%= troubles.name %></td>
+         </tr>
+       <% end %>
+    </tbody>
+  </table>
+  </div>
+   <div class="col-lg-8" >
+
+        <p>ようこそ</p>
+    </div>
+
+    </div>
+  </div>
+  </div>
+  <div class="row" >
+      <div class="col" >
+      <div><h4>新着商品</h4></div>
+
+      <% @items.each do |item| %>
+      <%= link_to item_path(item.id) do %>
+      <%= attachment_image_tag item, :image, size: "60x60", fallback: "no_image.jpg" %>
+      <% end %>
+      <br>
+
+           <div><%= item.name %><br>
+           ¥<%= item.price %></div>
+
+       <% end %>
+
+   </div>
+  </div>
+
+  </div>
+  </div>

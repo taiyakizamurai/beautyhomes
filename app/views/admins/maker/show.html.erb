@@ -1,0 +1,28 @@
+ <h2>メーカー詳細</h2>
+<div class="container">
+  <div class="row">
+   <div class="col-lg-4">
+    <p>メーカー画像</p>
+   <%= attachment_image_tag @maker, :image, size: "200x200", fallback: "no_image.jpg" %>
+     </div>
+<div class="col-lg-8">
+ <div class="row">
+<div class="col-lg-4">
+     <h5>メーカー名</h5>
+     </div>
+     <div class="col-lg-6">
+     <%= @maker.name %>
+     </div>
+      </div>
+ <div class="row">
+  <div class="col-lg-4">
+     <h5>メーカー説明</h5>
+     </div>
+     <div class="col-lg-6">
+      <%= @maker.introduction %>
+      </div>
+      </div>
+    <%= link_to "編集する", edit_admin_maker_path, class: "btn btn-success" %>
+  </div>
+    </div>
+      </div>

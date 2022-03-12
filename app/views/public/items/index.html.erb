@@ -1,0 +1,41 @@
+
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th><h1>商品一覧</h1></th>
+
+      </tr>
+      <tr>
+        <th><p>商品画像</p></th>
+        <th><p>商品名</p></th>
+        <th><p>税抜価格</p></th>
+        <th><p>メーカー</p></th>
+        <th><p>お悩みタグ</p></th>
+        <th><p>在庫状況</p></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+         <tr>
+           <td><%= link_to item_path(item.id) do %>
+      <%= attachment_image_tag item, :image, size: "140x140", fallback: "no_image.jpg" %>
+      <% end %></td>
+           <td><%= link_to item.name, item_path(item.id) %></td>
+           <td><%= item.price %></td>
+           <td><%= item.maker.name %></td>
+           <td><%= item.trouble.name %></td>
+           <td><%if item.is_active == 0 %>
+           在庫なし
+           <% elsif item.is_active == 1 %>
+           在庫あり
+           <% else %>
+           残りわずか
+
+           <% end %>
+           </td>
+         </tr>
+       <% end %>
+    </tbody>
+  </table>

@@ -1,0 +1,7 @@
+    <%= form_with model:@trouble, url:admin_trouble_path,  local:true do |f| %>
+
+    <p>ジャンル名</p>
+    <%= f.text_field :name %>
+
+    <%= f.submit "更新" %>
+    <% end %>

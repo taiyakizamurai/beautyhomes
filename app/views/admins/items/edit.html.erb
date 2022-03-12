@@ -1,0 +1,47 @@
+
+        <%= form_with model:@item, url:admin_item_path, local:true do |f| %>
+<table>
+   <tbody>
+
+
+     <tr>
+    <td><p>商品画像</p></td>
+  <td><%= f.attachment_field :image %></td>
+  </tr>
+ <tr>
+   <td><p>商品名</p></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+ <tr>
+    <td><p>商品説明</p></td>
+    <td><%= f.text_area :introduction %></td>
+  </tr>
+ <tr>
+    <td><p>お悩みタグ</p></td>
+    <td><%= f.collection_select :trouble_id, Trouble.all, :id, :name, include_blank: '--選択してください--' %></td>
+
+  </tr>
+  <tr>
+    <td><p>メーカー</p></td>
+    <td><%= f.collection_select :maker_id, Maker.all, :id, :name, include_blank: '--選択してください--' %></td>
+
+  </tr>
+     <tr>
+    <td><p>税抜価格</p></td>
+    <td><%= f.text_field :price %></td>
+  </tr>
+  <tr>
+    <td><p>販売ステータス</p></td>
+    <td><%= f.radio_button :is_active, :0 %>
+  <%= f.label :is_active, "在庫なし", {value: :在庫なし, style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, :1 %>
+  <%= f.label :is_active, "在庫あり", {value: :在庫あり, style: "display: inline-block;"} %>
+  <%= f.radio_button :is_active, :2 %>
+  <%= f.label :is_active, "残りわずか", {value: :残りわずか, style: "display: inline-block;"} %>
+  </td>
+  </tr>
+
+    <tr><td><%= f.submit "変更を保存", class: "btn btn-success" %></td></tr>
+    <% end %>
+        </tbody>
+ </table>

@@ -1,0 +1,25 @@
+
+
+ <h2>メーカー新規登録</h2>
+     <%= form_with model:@maker, url:admin_maker_index_path, method: :post, local:true do |f| %>
+  <table>
+   <tbody>
+
+
+     <tr>
+    <td><p>メーカー画像</p></td>
+  <td><%= f.attachment_field :image %></td>
+  </tr>
+ <tr>
+   <td><p>メーカー名</p></td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+ <tr>
+    <td><p>紹介文</p></td>
+    <td><%= f.text_area :introduction %></td>
+  </tr>
+
+<tr><td><%= f.submit '新規登録' %></td></tr>
+    <% end %>
+    </tbody>
+ </table>

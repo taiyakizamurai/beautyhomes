@@ -1,0 +1,22 @@
+<h3>お悩みタグ一覧・追加</h3>
+<%= render 'new',trouble: @trouble %>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+
+        <th><p>お悩みタグ<p></th>
+
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @troubles.each do |troubles| %>
+         <tr>
+           <td><%= troubles.name %></td>
+           <td><%= link_to "編集する", edit_admin_trouble_path(troubles.id), class: "btn btn-success" %> </td>
+         </tr>
+       <% end %>
+    </tbody>
+  </table>
+

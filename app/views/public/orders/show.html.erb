@@ -1,0 +1,91 @@
+  <div class="container">
+    <h2>注文履歴詳細</h2>
+  <div class="row">
+     <div class="col-lg-8">
+       <h5>注文情報</h5>
+       <table class="table table-hover table-inverse">
+    <tbody>
+         <tr>
+           <td>注文日</td>
+           <td><%= @order.created_at %></td>
+         </tr>
+       <tr>
+         <td>配送先</td>
+         <td>〒<%= @order.postal_code %><br>
+         <%= @order.address %><br>
+         <%= @order.name %></td>
+       </tr>
+       <tr>
+         <td>支払方法</td>
+         <td><% if @order.payment_method == 0 %>
+          　クレジットカード
+           <% else %>
+           銀行振込
+           <% end %></td>
+       </tr>
+       <tr>
+         <td>ステータス</td>
+         <td><% if @order.status == 0 %>
+          　入金待ち
+           <% elsif @order.status == 1 %>
+          　入金確認
+           <% elsif @order.status == 2 %>
+          　発送準備中
+           <% else %>
+           発送済み
+           <% end %></td>
+       </tr>
+
+    </tbody>
+  </table>
+  </div>
+  <div class="col-lg-4">
+    <h5>請求金額</h5>
+         <table class="table table-hover table-inverse">
+    <tbody>
+         <tr>
+           <td>商品合計</td>
+           <td><%= ((@order.total_payment)-(@order.shipping_cost)) %></td>
+
+       </tr>
+       <tr>
+         <td>配送料</td>
+         <td><%= @order.shipping_cost %></td>
+       </tr>
+       <tr>
+         <td>ご請求額</td>
+         <td><%= @order.total_payment %></td>
+       </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  <div class="row">
+    <h5>注文内容</h5>
+      <table class="table table-hover table-inverse">
+    <thead>
+
+      <tr>
+        <th><p>商品</p></th>
+        <th><p>単価（税込）</p></th>
+        <th><p>数量</p></th>
+        <th><p>小計</p></th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @order_details.each do |order_detail| %>
+         <tr>
+           <td><%= order_detail.item.name %></td>
+           <td><%= (order_detail.item.price*1.08).to_i %></td>
+           <td>
+               <%= order_detail.amount %>
+            </td>
+            <td><%= ((order_detail.item.price*1.08)*(order_detail.amount)).to_i %></td>
+         </tr>
+       <% end %>
+    </tbody>
+  </table>
+  　</div>
+  </div>
